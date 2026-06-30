@@ -212,7 +212,7 @@ const snackbar = ref({
 })
 
 const filteredStores = computed(() => {
-  const query = storeSearch.value.trim().toLowerCase()
+  const query = (storeSearch.value ?? '').trim().toLowerCase()
   if (!query) {
     return stores
   }
@@ -291,16 +291,50 @@ const activateOffer = (offer) => {
 const handleStoreAction = (action, storeName) => {
   showSnackbar(`${action} selected for ${storeName}`, 'info')
 }
+
+const profileMenuItems = [
+  { title: 'Settings', icon: 'mdi-cog-outline' },
+  { title: 'Account', icon: 'mdi-account-circle-outline' },
+  { title: 'Sign out', icon: 'mdi-logout' },
+]
+
+const onProfileMenuSelect = (itemTitle) => {
+  showSnackbar(`${itemTitle} selected`, 'info')
+}
 </script>
 
 <template>
   <v-app>
     <v-app-bar class="top-header" elevation="0">
-      <v-app-bar-title class="brand-title">Evergreen Rewards</v-app-bar-title>
+      <v-app-bar-title class="brand-title">
+        <v-btn
+          variant="text"
+          class="brand-link pa-0"
+          @click="activeTab = 'points'"
+        >
+          Evergreen Rewards
+        </v-btn>
+      </v-app-bar-title>
       <template #append>
-        <v-avatar color="secondary" size="38" class="text-primary font-weight-bold">
-          {{ user.initials }}
-        </v-avatar>
+        <v-menu location="bottom end" offset="8">
+          <template #activator="{ props }">
+            <v-btn icon variant="text" v-bind="props" aria-label="Open profile menu">
+              <v-avatar color="secondary" size="38" class="text-primary font-weight-bold">
+                {{ user.initials }}
+              </v-avatar>
+            </v-btn>
+          </template>
+
+          <v-list min-width="180">
+            <v-list-item
+              v-for="item in profileMenuItems"
+              :key="item.title"
+              :prepend-icon="item.icon"
+              :title="item.title"
+              @click="onProfileMenuSelect(item.title)"
+            />
+          </v-list>
+        </v-menu>
       </template>
     </v-app-bar>
 
@@ -316,7 +350,7 @@ const handleStoreAction = (action, storeName) => {
               <v-chip color="secondary" class="text-primary font-weight-bold">{{ user.tier }} Tier</v-chip>
             </div>
 
-            <p class="text-medium-emphasis mb-2">
+            <p class="hero-next-tier mb-2">
               {{ formatPoints(pointsSummary.neededForNextTier) }} points to {{ user.nextTier }}
             </p>
             <v-progress-linear

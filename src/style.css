@@ -40,6 +40,15 @@ body {
   letter-spacing: 0.2px;
 }
 
+.brand-link {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: none;
+  min-width: 0;
+}
+
 .app-shell {
   width: min(100%, 580px);
   margin: 0 auto;
@@ -65,6 +74,11 @@ body {
   font-family: 'Sora', sans-serif;
   font-size: 2rem;
   line-height: 1.1;
+  color: #cfa63a;
+}
+
+.hero-next-tier {
+  color: #ffffff;
 }
 
 .section-title,
