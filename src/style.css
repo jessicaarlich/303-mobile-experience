@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-sheen-top: #eef4ed;
+  --bg-sheen-bottom: #f8f9f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: radial-gradient(circle at top right, var(--bg-sheen-top), var(--bg-sheen-bottom) 45%);
+}
+
+.v-application {
+  background: transparent !important;
+}
+
+.top-header {
+  position: sticky !important;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+  background: rgba(248, 249, 245, 0.92) !important;
+  border-bottom: 1px solid rgba(31, 92, 67, 0.1);
+}
+
+.brand-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.app-shell {
+  width: min(100%, 580px);
+  margin: 0 auto;
+  padding: 18px 14px 100px;
+}
+
+.page-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.hero-card {
+  background: linear-gradient(140deg, #1f5c43 5%, #2b7b57 58%, #4f8b6d 100%) !important;
+  color: #fff;
+}
+
+.hero-eyebrow {
+  opacity: 0.88;
+}
+
+.hero-balance {
+  margin: 2px 0 0;
+  font-family: 'Sora', sans-serif;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.section-title,
+.page-title,
+.offer-title,
+.store-title {
+  font-family: 'Sora', sans-serif;
+  letter-spacing: 0.1px;
+}
+
+.section-title,
+.page-title {
+  font-size: 1.22rem;
+  margin: 0 0 4px;
+}
+
+.page-subtitle {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.offer-card {
+  overflow: hidden;
+}
+
+.offer-banner {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+}
+
+.offer-emoji {
+  font-size: 1.35rem;
+}
+
+.offer-title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.promo-code {
+  font-family: 'Sora', sans-serif;
+  margin: 2px 0 0;
+}
+
+.summary-card h3 {
+  margin: 4px 0 0;
+  font-family: 'Sora', sans-serif;
+  font-size: 1.35rem;
+}
+
+.order-items {
+  border-radius: 12px;
+  background: rgba(31, 92, 67, 0.04);
+}
+
+.bottom-nav {
+  position: fixed !important;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid rgba(31, 92, 67, 0.1);
+}
+
+@media (min-width: 768px) {
+  .app-shell {
+    padding: 24px 20px 104px;
+  }
+
+  .page-stack {
+    gap: 16px;
+  }
+
+  .hero-balance {
+    font-size: 2.3rem;
+  }
+}
